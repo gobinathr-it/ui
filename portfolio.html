@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="UTF-8">
 <title>Gobinath | Developer Portfolio</title>
@@ -19,7 +19,7 @@ color:white;
 overflow-x:hidden;
 }
 
-/* PARTICLES BACKGROUND */
+/* PARTICLE BACKGROUND */
 
 #particles-js{
 position:fixed;
@@ -32,25 +32,24 @@ z-index:-1;
 
 .hero{
 text-align:center;
-padding-top:150px;
+padding:120px 20px;
 }
 
 .hero h1{
 font-size:60px;
 color:#38bdf8;
-text-shadow:0 0 20px #38bdf8;
 }
 
-.hero p{
+.typing{
 margin-top:10px;
-font-size:20px;
-opacity:.8;
+font-size:22px;
+color:#a5b4fc;
 }
 
-/* SOCIAL BUTTONS */
+/* SOCIAL */
 
 .social{
-margin-top:30px;
+margin-top:25px;
 display:flex;
 justify-content:center;
 gap:20px;
@@ -61,26 +60,16 @@ padding:12px 25px;
 border-radius:30px;
 text-decoration:none;
 font-weight:bold;
-transition:0.3s;
+color:white;
+transition:.3s;
 }
 
-.github{
-background:#24292e;
-color:white;
-}
-
-.insta{
-background:linear-gradient(45deg,#f9ce34,#ee2a7b,#6228d7);
-color:white;
-}
-
-.linkedin{
-background:#0077b5;
-color:white;
-}
+.github{background:#24292e;}
+.insta{background:#e1306c;}
+.linkedin{background:#0077b5;}
 
 .social a:hover{
-transform:scale(1.15);
+transform:scale(1.1);
 box-shadow:0 0 20px #38bdf8;
 }
 
@@ -104,7 +93,7 @@ margin-top:40px;
 background:#1e293b;
 padding:20px;
 border-radius:10px;
-transition:0.3s;
+transition:.3s;
 }
 
 .skill:hover{
@@ -116,8 +105,8 @@ box-shadow:0 0 15px #38bdf8;
 
 .projects{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:25px;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:30px;
 margin-top:40px;
 }
 
@@ -125,7 +114,7 @@ margin-top:40px;
 background:#1e293b;
 padding:20px;
 border-radius:10px;
-transition:0.3s;
+transition:.3s;
 }
 
 .project:hover{
@@ -137,11 +126,22 @@ box-shadow:0 0 20px #38bdf8;
 display:inline-block;
 margin-top:10px;
 padding:8px 15px;
-background:#38bdf8;
 border-radius:6px;
 text-decoration:none;
+margin-right:10px;
+}
+
+.github-btn{
+background:#38bdf8;
 color:black;
 }
+
+.live-btn{
+background:#22c55e;
+color:white;
+}
+
+/* FOOTER */
 
 footer{
 text-align:center;
@@ -163,8 +163,9 @@ opacity:.7;
 
 <h1>Gobinath R</h1>
 
-<p>Frontend Developer • AI Learner</p>
+<div class="typing" id="typing"></div>
 
+<p>B.Tech IT Student</p>
 <p>J.K.K. Nataraja College of Engineering and Technology</p>
 
 <div class="social">
@@ -199,6 +200,7 @@ LinkedIn
 <div class="skill">MySQL</div>
 <div class="skill">Java</div>
 <div class="skill">Python</div>
+<div class="skill">AI / ML Learning</div>
 
 </div>
 
@@ -214,24 +216,48 @@ LinkedIn
 
 <div class="project">
 
-<h3>AI House Price Prediction</h3>
+<h3>Public Fund Watch</h3>
 
-<p>Machine learning model using Python</p>
+<p>Track and visualize public fund usage.</p>
 
-<a href="https://github.com/gobinathr-it/ai-house-price-prediction" target="_blank">
-View GitHub
+<a class="github-btn"
+href="https://github.com/gobinathr-it/public-fund-watch"
+target="_blank">
+GitHub
+</a>
+
+<a class="live-btn"
+href="https://fundwatch-spotlight.lovable.app/"
+target="_blank">
+Live Demo
 </a>
 
 </div>
 
 <div class="project">
 
-<h3>UI Design</h3>
+<h3>AI House Price Prediction</h3>
 
-<p>Frontend UI components with HTML CSS</p>
+<p>Machine learning model using Python.</p>
 
-<a href="https://github.com/gobinathr-it/ui" target="_blank">
-View GitHub
+<a class="github-btn"
+href="https://github.com/gobinathr-it/ai-house-price-prediction"
+target="_blank">
+GitHub
+</a>
+
+</div>
+
+<div class="project">
+
+<h3>UI Components</h3>
+
+<p>Frontend UI practice using HTML CSS.</p>
+
+<a class="github-btn"
+href="https://github.com/gobinathr-it/ui"
+target="_blank">
+GitHub
 </a>
 
 </div>
@@ -240,10 +266,12 @@ View GitHub
 
 <h3>Java Practice</h3>
 
-<p>Java programming exercises</p>
+<p>Java programming exercises.</p>
 
-<a href="https://github.com/gobinathr-it/java" target="_blank">
-View GitHub
+<a class="github-btn"
+href="https://github.com/gobinathr-it/java"
+target="_blank">
+GitHub
 </a>
 
 </div>
@@ -254,11 +282,11 @@ View GitHub
 
 <footer>
 
-© 2026 Gobinath R
+© 2026 Gobinath R | Developer Portfolio
 
 </footer>
 
-<!-- PARTICLES SCRIPT -->
+<!-- PARTICLES -->
 
 <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
 
@@ -277,6 +305,47 @@ move:{speed:2}
 }
 
 });
+
+/* Typing Animation */
+
+const words=[
+"Frontend Developer",
+"AI Learner",
+"Java & Python Programmer"
+];
+
+let i=0;
+let j=0;
+let current="";
+let isDeleting=false;
+
+function type(){
+
+current=words[i];
+
+document.getElementById("typing").textContent=
+current.substring(0,j);
+
+if(!isDeleting){
+j++;
+if(j>current.length){
+isDeleting=true;
+setTimeout(type,1000);
+return;
+}
+}else{
+j--;
+if(j===0){
+isDeleting=false;
+i++;
+if(i===words.length) i=0;
+}
+}
+
+setTimeout(type,100);
+}
+
+type();
 
 </script>
 
